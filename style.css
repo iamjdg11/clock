@@ -23,7 +23,7 @@ body {
 .clock {
   /* height: 30vh; */
   color: white;
-  font-size: 15vw;
+  font-size: 20vw;
   font-family: "Noto Sans KR";
   /* line-height: 30vh; */
   display: flex;
@@ -54,13 +54,14 @@ body {
 
 .clock_date {
   /* height: 5vw; */
-  color: gray;
-  font-size: 5vw;
+  color: white;
+  font-size: 7vw;
   /* line-height: 20vh; */
 }
 
 .tick2 {
   margin-right: 10px;
+  font-size: 50%;
   /* line-height: 17vh; */
 }
 
