@@ -115,5 +115,5 @@ function updateContainer2(container, newValue) {
 // }
 
 
-setInterval(updateTime, 100)
-setInterval(window.location.reload(), 1000)
+setInterval(updateTime, 100);
+setInterval(window.location.reload(), 20000);
