@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: black;
+  display: flex;
+  flex-direction: column;
+  gap: 10vh;
+  justify-content: center;
+  align-items: center;
+  /* background-attachment: fixed; */
+}
+
+.cover {
+  background-image: url("./img/super_dad.jpeg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  /* 
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.5;
+  z-index: 1; */
+}
+
+.clock {
+  /* height: 30vh; */
+  color: white;
+  font-size: 15vw;
+  font-family: "Noto Sans KR";
+  /* line-height: 30vh; */
+  display: flex;
+  position: relative;
+  /*background: green;*/
+  overflow: hidden;
+}
+
+.clock::before,
+.clock::after {
+  content: "";
+  width: 7ch;
+  height: 3vh;
+  /* background: linear-gradient(to top, transparent, black); */
+  position: absolute;
+  z-index: 2;
+}
+
+/* 
+.clock::after {
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, black);
+} */
+
+.clock > div {
+  display: flex;
+}
+
+.clock_date {
+  /* height: 5vw; */
+  color: gray;
+  font-size: 5vw;
+  /* line-height: 20vh; */
+}
+
+.tick2 {
+  margin-right: 10px;
+  /* line-height: 17vh; */
+}
+
+.tick-hidden {
+  opacity: 0;
+}
+
+/* .move {
+  animation: move linear 1s infinite;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(0vh);
+  }
+  to {
+    transform: translateY(-20vh);
+  }
+} */
