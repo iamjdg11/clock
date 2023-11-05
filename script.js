@@ -14,11 +14,17 @@ last.setUTCHours(-1)
 
 var tickState = true
 
+function convert12hr(hoursIn24) {
+  const hoursIn12 = ((hoursIn24 + 11) % 12 + 1).toString().padStart(2, ' ');
+  const ampmTxt = hoursIn24 > 12 ? "PM" : "AM"
+  return [hoursIn12, ampmTxt];
+}
+
 function updateTime() {
   var now = new Date
 
-  var lastHours = last.getHours().toString().padStart(2, ' ')
-  var nowHours = now.getHours().toString().padStart(2, ' ')
+  var lastHours = convert12hr(last.getHours())[0]
+  var nowHours = convert12hr(now.getHours())[0]
   if (lastHours !== nowHours) {
     updateContainer2(hoursContainer, nowHours)
   }
@@ -37,8 +43,8 @@ function updateTime() {
   }
 
 
-  const nowYear = now.getFullYear().toString();
-  const lastYear = last.getFullYear().toString();
+  const nowYear = now.getFullYear().toString().substring(2);
+  const lastYear = last.getFullYear().toString().substring(2);
   if (lastYear !== nowYear) {
     //tick()
     updateContainer2(yearContainer, nowYear)
@@ -116,4 +122,44 @@ function updateContainer2(container, newValue) {
 
 
 setInterval(updateTime, 100);
-setTimeout(() => { window.location.reload() }, 20000);
+
+function preventScreenSleep() {
+  // Request a Wake Lock to keep the display active
+  if ('wakeLock' in navigator && 'request' in navigator.wakeLock) {
+    navigator.wakeLock.request('screen').then(function (wakeLock) {
+      console.log('Screen Wake Lock is active');
+      // You can release the lock when you no longer need it
+      // wakeLock.release();
+    }).catch(function (err) {
+      console.error('Could not create Screen Wake Lock: ' + err);
+    });
+  }
+}
+
+// Call the preventScreenSleep function when your page loads or when you need to prevent sleep
+preventScreenSleep();
+
+
+function makeFullScreenMode() {
+  try {
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen();
+    } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+      document.documentElement.mozRequestFullScreen();
+    } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+      document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) { // Internet Explorer
+      document.documentElement.msRequestFullscreen();
+    }
+  } catch (e) {
+    console.log("error in full screen mode", e)
+  }
+
+}
+
+// makeFullScreenMode();
+
+document.addEventListener('dblclick', () => {
+  console.log("full screen mode");
+  makeFullScreenMode();
+})

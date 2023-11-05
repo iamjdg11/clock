@@ -14,7 +14,7 @@ body {
   background: black;
   display: flex;
   flex-direction: column;
-  gap: 10vh;
+  /* gap: 5vh; */
   justify-content: center;
   align-items: center;
   /* background-attachment: fixed; */
@@ -23,23 +23,19 @@ body {
 .clock {
   /* height: 30vh; */
   color: white;
-  font-size: 20vw;
   font-family: "Noto Sans KR";
+  padding: 0;
   /* line-height: 30vh; */
   display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   /*background: green;*/
   overflow: hidden;
 }
 
-.clock::before,
-.clock::after {
-  content: "";
-  width: 7ch;
-  height: 3vh;
-  /* background: linear-gradient(to top, transparent, black); */
-  position: absolute;
-  z-index: 2;
+.clock_time {
+  flex-direction: column;
 }
 
 /* 
@@ -55,14 +51,29 @@ body {
 .clock_date {
   /* height: 5vw; */
   color: white;
-  font-size: 7vw;
   /* line-height: 20vh; */
 }
 
 .tick2 {
   margin-right: 10px;
-  font-size: 50%;
   /* line-height: 17vh; */
+}
+
+.LTxt {
+  font-size: 45vw;
+  line-height: 1;
+}
+
+.MTxt {
+  font-size: 15vw;
+}
+
+.STxt {
+  font-size: 10vw;
+}
+
+.XSTxt {
+  font-size: 5vw;
 }
 
 .tick-hidden {
