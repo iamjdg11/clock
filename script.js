@@ -138,15 +138,19 @@ async function updateAmPm(hour) {
     const pm = document.getElementById("pm");
 
     if (hour > 12) {
-      am.style.backgroundColor = 'black';
-      pm.style.backgroundColor = "gray";
+      am.style.backgroundColor = 'white';
+      am.style.color = 'black';
+      pm.style.backgroundColor = "black";
+      pm.style.color = 'white';
 
       weatherTag = am;
       pm.innerText = "PM"
 
     } else {
-      am.style.backgroundColor = 'gray';
-      pm.style.backgroundColor = "black";
+      am.style.backgroundColor = 'black';
+      am.style.color = 'white';
+      pm.style.backgroundColor = "white";
+      pm.style.color = 'black';
 
       weatherTag = pm;
       am.innerText = "AM"
