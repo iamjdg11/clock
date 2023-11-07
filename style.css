@@ -82,6 +82,7 @@ body {
 
 .ampm {
   height: 10vh;
+  font-size: 5vh;
   display: flex;
   flex-direction: row;
   justify-content: stretch;
@@ -89,6 +90,7 @@ body {
   color: white;
   width: 100%;
   font-weight: bold;
+  border-bottom: 5px solid gray;
 }
 
 .am,
