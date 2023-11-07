@@ -60,7 +60,7 @@ body {
 }
 
 .LTxt {
-  font-size: 25vh;
+  font-size: 30vh;
   line-height: 1;
 }
 
@@ -89,7 +89,6 @@ body {
   align-content: center;
   color: white;
   width: 100%;
-  font-weight: bold;
   border-bottom: 5px solid gray;
 }
 

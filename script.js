@@ -155,7 +155,7 @@ async function updateAmPm(hour) {
 }
 
 async function fetchWeather() {
-  url = "http://dataservice.accuweather.com/currentconditions/v1/226081?apikey=sNZRfqJnetA3rhJRhBUEFvjQJwTghLbv&language=ko-KR"
+  url = "https://dataservice.accuweather.com/currentconditions/v1/226081?apikey=sNZRfqJnetA3rhJRhBUEFvjQJwTghLbv&language=ko-KR"
 
   fetch(url)
     .then(response => {
@@ -171,7 +171,7 @@ async function fetchWeather() {
         const returnValue = temp + "°C  " + condition;
 
         console.log(returnValue);
-        weatherTag.innerText = returnValue;
+        weatherTag.innerHTML = '<pre>' + returnValue + '</pre>';
       }
 
       console.log(result)
