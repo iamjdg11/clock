@@ -15,7 +15,7 @@ body {
   display: flex;
   flex-direction: column;
   /* gap: 5vh; */
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   /* background-attachment: fixed; */
 }
@@ -60,26 +60,44 @@ body {
 }
 
 .LTxt {
-  font-size: 45vw;
+  font-size: 25vh;
   line-height: 1;
 }
 
 .MTxt {
-  font-size: 15vw;
+  font-size: 12vh;
 }
 
 .STxt {
-  font-size: 10vw;
+  font-size: 7vh;
 }
 
 .XSTxt {
-  font-size: 5vw;
+  font-size: 3vh;
 }
 
 .tick-hidden {
   opacity: 0;
 }
 
+.ampm {
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-content: center;
+  color: white;
+  width: 100%;
+  font-weight: bold;
+}
+
+.am,
+.pm {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* .move {
   animation: move linear 1s infinite;
 }

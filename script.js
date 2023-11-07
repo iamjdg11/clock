@@ -14,6 +14,8 @@ last.setUTCHours(-1)
 
 var tickState = true
 
+let weatherTag = undefined;
+
 function convert12hr(hoursIn24) {
   const hoursIn12 = ((hoursIn24 + 11) % 12 + 1).toString().padStart(2, ' ');
   const ampmTxt = hoursIn24 > 12 ? "PM" : "AM"
@@ -27,6 +29,7 @@ function updateTime() {
   var nowHours = convert12hr(now.getHours())[0]
   if (lastHours !== nowHours) {
     updateContainer2(hoursContainer, nowHours)
+    updateAmPm(now.getHours());
   }
 
   var lastMinutes = last.getMinutes().toString().padStart(2, '0')
@@ -85,41 +88,6 @@ function updateContainer2(container, newValue) {
   container.innerText = newValue;
 }
 
-// function updateContainer(container, newTime) {
-//   var time = newTime.split('')
-
-//   if (time.length === 1) {
-//     time.unshift('0')
-//   }
-
-
-//   var first = container.firstElementChild
-//   if (first.lastElementChild.textContent !== time[0]) {
-//     updateNumber(first, time[0])
-//   }
-
-//   var last = container.lastElementChild
-//   if (last.lastElementChild.textContent !== time[1]) {
-//     updateNumber(last, time[1])
-//   }
-// }
-
-// function updateNumber(element, number) {
-//   //element.lastElementChild.textContent = number
-//   var second = element.lastElementChild.cloneNode(true)
-//   second.textContent = number
-
-//   element.appendChild(second)
-//   element.classList.add('move')
-
-//   setTimeout(function () {
-//     element.classList.remove('move')
-//   }, 990)
-//   setTimeout(function () {
-//     element.removeChild(element.firstElementChild)
-//   }, 990)
-// }
-
 
 setInterval(updateTime, 100);
 
@@ -163,3 +131,52 @@ document.addEventListener('dblclick', () => {
   console.log("full screen mode");
   makeFullScreenMode();
 })
+
+async function updateAmPm(hour) {
+  fetchWeather().then(currentWeather => {
+    const am = document.getElementById("am");
+    const pm = document.getElementById("pm");
+
+    if (hour > 12) {
+      am.style.backgroundColor = 'black';
+      pm.style.backgroundColor = "gray";
+
+      weatherTag = am;
+      pm.innerText = "PM"
+
+    } else {
+      am.style.backgroundColor = 'gray';
+      pm.style.backgroundColor = "black";
+
+      weatherTag = pm;
+      am.innerText = "AM"
+    }
+  });
+}
+
+async function fetchWeather() {
+  url = "http://dataservice.accuweather.com/currentconditions/v1/226081?apikey=sNZRfqJnetA3rhJRhBUEFvjQJwTghLbv&language=ko-KR"
+
+  fetch(url)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then(result => {
+      if (result.length > 0) {
+        const temp = result[0].Temperature.Metric.Value;
+        const condition = result[0].WeatherText
+
+        const returnValue = temp + "°C  " + condition;
+
+        console.log(returnValue);
+        weatherTag.innerText = returnValue;
+      }
+
+      console.log(result)
+    })
+    .catch((error) => {
+      console.error("error in fetching weather data:", error)
+    })
+}
