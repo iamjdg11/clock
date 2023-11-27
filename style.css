@@ -99,6 +99,58 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/* Styles for landscape mode */
+@media screen and (orientation: landscape) {
+  /* CSS rules for landscape mode */
+  .clock_time {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .LTxt {
+    font-size: 40vh;
+    line-height: 1;
+  }
+
+  .MTxt {
+    font-size: 20vh;
+  }
+
+  .STxt {
+    font-size: 14vh;
+  }
+
+  .XSTxt {
+    font-size: 6vh;
+  }
+}
+
+/* Styles for portrait mode */
+@media screen and (orientation: portrait) {
+  /* CSS rules for portrait mode */
+  .clock_time {
+    flex-direction: column;
+  }
+
+  .LTxt {
+    font-size: 30vh;
+    line-height: 1;
+  }
+
+  .MTxt {
+    font-size: 12vh;
+  }
+
+  .STxt {
+    font-size: 7vh;
+  }
+
+  .XSTxt {
+    font-size: 3vh;
+  }
+}
 /* .move {
   animation: move linear 1s infinite;
 }
