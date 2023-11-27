@@ -110,20 +110,20 @@ body {
   }
 
   .LTxt {
-    font-size: 40vh;
+    font-size: 30vw;
     line-height: 1;
   }
 
   .MTxt {
-    font-size: 20vh;
+    font-size: 20vw;
   }
 
   .STxt {
-    font-size: 14vh;
+    font-size: 10vw;
   }
 
   .XSTxt {
-    font-size: 6vh;
+    font-size: 5vw;
   }
 }
 
